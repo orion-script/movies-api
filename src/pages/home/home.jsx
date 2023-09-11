@@ -42,7 +42,6 @@ const Home = () => {
   return (
     <>
       <div className="w-full">
-        <Header onSearchChange={onSearchChange} searchField={searchField} />
         {/* <div>
           <input
             type="search"
@@ -56,6 +55,7 @@ const Home = () => {
         </div> */}
 
         <div>
+          <Header onSearchChange={onSearchChange} searchField={searchField} />
           {errorMessage && (
             <div className="font-bold text-center text-xl italic mt-20">
               {errorMessage}
@@ -76,26 +76,27 @@ const Home = () => {
                   to={`/movie/${movie.id}`}
                   style={{ textDecoration: "none", color: "white" }}
                 >
-                  <div className="posterImage">
+                  <div className="h-[450px] w-full md:h-[600px] relative">
                     <img
                       src={`https://image.tmdb.org/t/p/original${
                         movie.backdrop_path || movie.poster_path
                       }`}
                       alt={movie.original_title}
+                      className="object-cover w-full h-full bg-center bg-cover bg-no-repeat"
                     />
-                  </div>
-                  <div className="posterImage__overlay">
-                    <div className="posterImage__title">
-                      {movie.original_title}
-                    </div>
-                    <div className="posterImage__runtime">
-                      {movie.release_date}
-                      <span className="posterImage__rating">
-                        {movie.vote_average} <i className="fas fa-star" />
-                      </span>
-                    </div>
-                    <div className="posterImage__description">
-                      {movie.overview}
+                    <div className="posterImage__overlay">
+                      <div className="posterImage__title">
+                        {movie.original_title}
+                      </div>
+                      <div className="posterImage__runtime">
+                        {movie.release_date}
+                        <span className="posterImage__rating">
+                          {movie.vote_average} <i className="fas fa-star" />
+                        </span>
+                      </div>
+                      <div className="posterImage__description">
+                        {movie.overview}
+                      </div>
                     </div>
                   </div>
                 </Link>

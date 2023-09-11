@@ -1,12 +1,11 @@
 .cards {
-  display: inline-block;
   transition: transform 0.2s;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  margin: 0.19rem;
+  margin: auto;
   cursor: pointer;
-  min-width: 200px;
+  width: 95%;
   height: 300px;
   z-index: 0;
   border: 1px solid rgb(99, 99, 99);
@@ -21,8 +20,9 @@
 }
 
 .cards__img {
-  height: 300px;
-  width: 20rem;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .cards__overlay {

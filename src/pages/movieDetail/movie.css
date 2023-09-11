@@ -36,7 +36,7 @@
 }
 
 .movie__detailRight {
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   height: 450px;
@@ -63,7 +63,7 @@
 
 .movie__genre {
   padding: 0.5rem;
-  border: 2px solid white;
+  border: 2px solid black;
   border-radius: 20px;
   margin-right: 1rem;
 }
