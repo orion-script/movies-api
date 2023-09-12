@@ -1,9 +1,8 @@
-// import React from 'react'
 import { AiFillFacebook } from "react-icons/ai";
 import { BsInstagram, BsTwitter, BsYoutube } from "react-icons/bs";
 function footer() {
   return (
-    <div className="w-11/12 md:w-2/4 m-auto h-auto mt-10 flex flex-col text-center font-sans py-5 font-mono">
+    <div className="w-11/12 md:w-2/4 m-auto h-auto mt-10 flex flex-col text-center py-5 font-mono">
       <div className="flex items-center w-4/5 m-auto justify-between">
         <AiFillFacebook className="w-8 h-8 shadow-lg" />
         <BsInstagram className="w-8 h-8 shadow-lg" />

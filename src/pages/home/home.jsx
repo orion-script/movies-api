@@ -7,11 +7,11 @@ import MovieList from "../../components/movieList/movieList";
 import Header from "../../components/header/Header";
 
 const Home = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [defaultMovies, setDefaultMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  // const [showSearchResults, setShowSearchResults] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -19,71 +19,87 @@ const Home = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setPopularMovies(data.results);
+        setDefaultMovies(data.results);
       })
       .catch((error) => {
         setErrorMessage(error.message);
       });
   }, []);
 
-  useEffect(() => {
-    // Filter the movies based on the searchField
-    const lowercasedSearchField = searchField.toLowerCase();
-    const filteredMovies = popularMovies.filter((movie) =>
-      movie.original_title.toLowerCase().includes(lowercasedSearchField)
-    );
-    setFilteredMovies(filteredMovies);
-  }, [popularMovies, searchField]);
-
   const onSearchChange = (event) => {
     setSearchField(event.target.value);
+  };
+
+  const handleSearch = () => {
+    if (searchField === "") {
+      alert("Inpult a movie title");
+    } else {
+      setIsLoading(true);
+
+      setTimeout(() => {
+        const lowercasedSearchField = searchField.toLowerCase();
+        const filteredMovies = defaultMovies.filter((movie) =>
+          movie.original_title.toLowerCase().includes(lowercasedSearchField)
+        );
+
+        setIsLoading(false);
+        setFilteredMovies(filteredMovies);
+
+        if (filteredMovies.length === 0) {
+          setErrorMessage("Search not found");
+        } else {
+          setErrorMessage("");
+        }
+      }, 1500);
+      setSearchField("");
+    }
   };
 
   return (
     <>
       <div className="w-full">
-        {/* <div>
-          <input
-            type="search"
-            name=""
-            id=""
-            value={searchField}
-            onChange={onSearchChange}
-            className="text-black"
-            placeholder="Search movies..."
-          />
-        </div> */}
+        <Header
+          searchField={searchField}
+          onSearchChange={onSearchChange}
+          handleSearch={handleSearch}
+        />
 
         <div>
-          <Header onSearchChange={onSearchChange} searchField={searchField} />
           {errorMessage && (
             <div className="font-bold text-center text-xl italic mt-20">
               {errorMessage}
             </div>
           )}
-
           <div>
-            <Carousel
-              showThumbs={false}
-              autoPlay={true}
-              transitionTime={3}
-              infiniteLoop={true}
-              showStatus={false}
-            >
-              {filteredMovies.map((movie) => (
-                <Link
-                  key={movie.id}
-                  to={`/movie/${movie.id}`}
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  <div className="h-[450px] w-full md:h-[600px] relative">
-                    <img
-                      src={`https://image.tmdb.org/t/p/original${
-                        movie.backdrop_path || movie.poster_path
-                      }`}
-                      alt={movie.original_title}
-                      className="object-cover w-full h-full bg-center bg-cover bg-no-repeat"
-                    />
+            {isLoading ? (
+              <div className="text-center font-bold text-xl mt-4">
+                Loading...
+              </div>
+            ) : (
+              <Carousel
+                showThumbs={false}
+                autoPlay={true}
+                transitionTime={3}
+                infiniteLoop={true}
+                showStatus={false}
+              >
+                {(filteredMovies.length > 0
+                  ? filteredMovies
+                  : defaultMovies
+                ).map((movie) => (
+                  <Link
+                    key={movie.id}
+                    to={`/movie/${movie.id}`}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <div className="posterImage h-[400px] md:h-[500px]">
+                      <img
+                        src={`https://image.tmdb.org/t/p/original${
+                          movie.backdrop_path || movie.poster_path
+                        }`}
+                        alt={movie.original_title}
+                      />
+                    </div>
                     <div className="posterImage__overlay">
                       <div className="posterImage__title">
                         {movie.original_title}
@@ -98,10 +114,10 @@ const Home = () => {
                         {movie.overview}
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
-            </Carousel>
+                  </Link>
+                ))}
+              </Carousel>
+            )}
           </div>
         </div>
         <MovieList movies={filteredMovies} />

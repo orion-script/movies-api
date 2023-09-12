@@ -3,15 +3,22 @@ import { useEffect, useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./card.css";
 import { Link } from "react-router-dom";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const Cards = ({ movie }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
   }, []);
+
+  const toggleFavorite = (e) => {
+    e.stopPropagation();
+    setIsFavorite(!isFavorite);
+  };
 
   return (
     <>
@@ -27,6 +34,13 @@ const Cards = ({ movie }) => {
           style={{ textDecoration: "none", color: "white" }}
         >
           <div className="cards">
+            <button className="favorite-button" onClick={toggleFavorite}>
+              {isFavorite ? (
+                <AiFillHeart className="w-[40px] h-[40px] text-red-500" />
+              ) : (
+                <AiOutlineHeart className="w-[40px] h-[40px]" />
+              )}
+            </button>
             <img
               className="cards__img"
               src={`https://image.tmdb.org/t/p/original${

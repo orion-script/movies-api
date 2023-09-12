@@ -1,65 +1,46 @@
-// import React from "react";
-// import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.svg";
 import Menu from "../../assets/Menu.svg";
 import "./Header.css";
-// import SearchBox from "../searchInput/Search";
+import PropTypes from "prop-types";
 
-const Header = ({ onSearchChange, searchField }) => {
-  // const [searchField, setSearchField] = useState("");
-  // const [loading, setLoading] = useState(false);
-
-  // const onSearchChange = (event) => {
-  //   const searchField = event.target.value.toLocaleLowerCase();
-  //   setSearchField(searchField);
-  // };
-
-  // console.log(searchField);
-
+const Header = ({ onSearchChange, searchField, handleSearch }) => {
   return (
-    <div className="bg-red-900 flex flex-col w-full">
-      <div className="bg-transparent flex w-full justify-between items-center h-12">
-        <Link to="/">
-          <img className="header__icon" src={Logo} />
-        </Link>
-        {/* <div className="flex">
-          <Link to="/movies/popular" style={{ textDecoration: "none" }}>
-            <span>Popular</spa n>
-          </Link>
-          <Link to="/movies/top_rated" style={{ textDecoration: "none" }}>
-            <span>Top Rated</span>
-          </Link>
-          <Link to="/movies/upcoming" style={{ textDecoration: "none" }}>
-            <span>Upcoming</span>
-          </Link>
-        </div> */}
+    <div className="bg-gray-800 text-[#fff] flex w-full justify-between items-center h-auto px-5 md:px-10 pb-5">
+      <Link to="/">
+        <img className="header__icon hidden md:block" src={Logo} />
+      </Link>
+
+      <div className="w-11/12 md:w-2/4 h-10 flex justify-between">
         <input
+          required
           type="search"
           name=""
           id=""
           value={searchField}
           onChange={onSearchChange}
-          className="text-black h-10 w-2/4 outline-none pl-3 mt-20 md:mt-0 hidden md:block border-2 rounded-lg"
+          className="text-black h-full w-8/12 md:w-10/12 outline-none pl-3 border-2 rounded-lg"
           placeholder="What do you want to watch?"
         />
-        <div className="flex items-center">
-          <button className="mr-3 hidden md:block">Sign In</button>
-          <img className="header__icon" src={Menu} />
-        </div>
+        <button
+          onClick={handleSearch}
+          className="bg-red-900 h-full w-[20%] md:w-[12%] rounded-lg"
+        >
+          Search
+        </button>
       </div>
-
-      <input
-        type="search"
-        name=""
-        id=""
-        value={searchField}
-        onChange={onSearchChange}
-        className="text-black h-10 w-4/5 outline-none pl-3 mt-20 md:mt-0 md:hidden block border-2 rounded-lg m-auto my-5"
-        placeholder="What do you want to watch?"
-      />
+      <div className="items-center hidden md:flex">
+        <button className="mr-3">Sign In</button>
+        <img className="header__icon" src={Menu} />
+      </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  onSearchChange: PropTypes.func.isRequired,
+  searchField: PropTypes.string.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default Header;

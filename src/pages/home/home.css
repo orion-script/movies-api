@@ -1,24 +1,26 @@
 /* .posterImage {
-  height: 500px;
+  height: 400px;
 } */
 
 .posterImage > img {
   margin: auto;
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .posterImage__overlay {
   position: absolute;
-  /* padding-top: 10px; */
+  padding-top: 02px;
   top: 10px;
-  height: 70%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
   justify-content: flex-end;
   /* align-items: flex-start; */
-  /* background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1)); */
+  background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
   opacity: 1;
   transition: opacity 0.3s;
 }

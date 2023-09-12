@@ -63,3 +63,24 @@
   font-size: 0.75rem;
   margin-bottom: 0.25rem;
 }
+
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1; /* To position above the card content */
+}
+
+/* Style the heart icon */
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1; /* To position above the card content */
+}
