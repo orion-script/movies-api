@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const Header = ({ onSearchChange, searchField, handleSearch }) => {
   return (
-    <div className="bg-gray-800 text-[#fff] flex w-full justify-between items-center h-auto px-5 md:px-10 pb-5">
+    <div className="bg-gray-800 text-[#fff] flex w-full justify-between items-center h-auto px-5 md:px-10 py-5">
       <Link to="/">
         <img className="header__icon hidden md:block" src={Logo} />
       </Link>

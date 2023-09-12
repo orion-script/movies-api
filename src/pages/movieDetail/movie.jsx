@@ -45,7 +45,7 @@ const Movie = () => {
           </div>
           <div className="movie__detailRight">
             <div className="movie__detailRightTop">
-              <div className="movie__name">
+              <div className="movie__name" data-testid="movie-title">
                 {currentMovieDetail ? currentMovieDetail.original_title : ""}
               </div>
               <div className="movie__tagline">
@@ -60,10 +60,13 @@ const Movie = () => {
                     : ""}
                 </span>
               </div>
-              <div className="movie__runtime">
+              <div className="movie__runtime" data-testid="movie-runtime">
                 {currentMovieDetail ? currentMovieDetail.runtime + " mins" : ""}
               </div>
-              <div className="movie__releaseDate">
+              <div
+                className="movie__releaseDate"
+                data-testid="movie-release-date"
+              >
                 {currentMovieDetail
                   ? "Release date: " + currentMovieDetail.release_date
                   : ""}
@@ -82,7 +85,9 @@ const Movie = () => {
             </div>
             <div className="movie__detailRightBottom">
               <div className="synopsisText">Synopsis</div>
-              <div>{currentMovieDetail ? currentMovieDetail.overview : ""}</div>
+              <div data-testid="movie-overview">
+                {currentMovieDetail ? currentMovieDetail.overview : ""}
+              </div>
             </div>
           </div>
         </div>

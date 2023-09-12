@@ -32,7 +32,7 @@ const Home = () => {
 
   const handleSearch = () => {
     if (searchField === "") {
-      alert("Inpult a movie title");
+      alert("Input a movie title");
     } else {
       setIsLoading(true);
 

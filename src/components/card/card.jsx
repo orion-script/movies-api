@@ -32,6 +32,7 @@ const Cards = ({ movie }) => {
         <Link
           to={`/movie/${movie.id}`}
           style={{ textDecoration: "none", color: "white" }}
+          data-testid="movie-card"
         >
           <div className="cards">
             <button className="favorite-button" onClick={toggleFavorite}>
@@ -46,12 +47,14 @@ const Cards = ({ movie }) => {
               src={`https://image.tmdb.org/t/p/original${
                 movie ? movie.poster_path : ""
               }`}
+              data-testid="movie-poster"
             />
+
             <div className="cards__overlay">
-              <div className="card__title">
+              <div className="card__title" data-testid="movie-title">
                 {movie ? movie.original_title : ""}
               </div>
-              <div className="card__runtime">
+              <div className="card__runtime" data-testid="movie-release-date">
                 {movie ? movie.release_date : ""}
                 <span className="card__rating">
                   {movie ? movie.vote_average : ""}
