@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./movie.css";
-import { useParams } from "react-router-dom";
-import Header from "../../components/header/Header";
+import { useParams, Link } from "react-router-dom";
+// import Header from "../../components/header/Header";
 
 const Movie = () => {
   const [currentMovieDetail, setMovie] = useState();
@@ -22,7 +22,11 @@ const Movie = () => {
 
   return (
     <>
-      <Header />
+      <Link to="/" className="">
+        <button className="bg-gray-700 h-10 w-20 ml-5 md:ml-20 my-10 rounded-lg text-white font-mono shadow-lg">
+          Back
+        </button>
+      </Link>
       <div className="movie">
         <div className="movie__intro">
           <img
