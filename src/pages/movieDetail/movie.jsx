@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./movie.css";
 import { useParams, Link } from "react-router-dom";
+import Footer from "../../components/footer/footer";
 // import Header from "../../components/header/Header";
 
 const Movie = () => {
@@ -95,6 +96,9 @@ const Movie = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-[21rem] md:mt-0">
+        <Footer />
       </div>
     </>
   );

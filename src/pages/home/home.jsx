@@ -5,6 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import MovieList from "../../components/movieList/movieList";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/footer";
 
 const Home = () => {
   const [searchField, setSearchField] = useState("");
@@ -122,6 +123,7 @@ const Home = () => {
         </div>
         <MovieList movies={filteredMovies} />
       </div>
+      <Footer />
     </>
   );
 };
