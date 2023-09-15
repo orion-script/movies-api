@@ -97,7 +97,7 @@ const Movie = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[21rem] md:mt-0">
+      <div className="mt-[29rem] md:mt-0">
         <Footer />
       </div>
     </>

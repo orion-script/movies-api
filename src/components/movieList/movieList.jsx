@@ -27,7 +27,9 @@ const MovieList = () => {
 
   return (
     <div className="movie__list">
-      <h2 className="list__title">{(type ? type : "POPULAR").toUpperCase()}</h2>
+      <h2 className="list__title">
+        {(type ? type : "TOP RATED").toUpperCase()}
+      </h2>
       <div className="w-11/12 grid m-auto md:grid-cols-4 gap-2">
         {movieList.map((movie) => (
           <Cards movie={movie} key={movie.id} />
