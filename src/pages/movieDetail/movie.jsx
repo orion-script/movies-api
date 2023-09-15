@@ -18,7 +18,13 @@ const Movie = () => {
       `https://api.themoviedb.org/3/movie/${id}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
     )
       .then((res) => res.json())
-      .then((data) => setMovie(data));
+      .then((data) => {
+        // Convert release_date to UTC format
+        if (data.release_date) {
+          data.release_date = new Date(data.release_date).toUTCString();
+        }
+        setMovie(data);
+      });
   };
 
   return (
@@ -73,7 +79,7 @@ const Movie = () => {
                 data-testid="movie-release-date"
               >
                 {currentMovieDetail
-                  ? "Release date: " + currentMovieDetail.release_date
+                  ? "Release date (UTC): " + currentMovieDetail.release_date
                   : ""}
               </div>
               <div className="movie__genres">

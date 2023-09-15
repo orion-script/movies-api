@@ -20,7 +20,13 @@ const Home = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setDefaultMovies(data.results);
+        const moviesWithUTCDate = data.results.map((movie) => {
+          if (movie.release_date) {
+            movie.release_date = new Date(movie.release_date).toUTCString();
+          }
+          return movie;
+        });
+        setDefaultMovies(moviesWithUTCDate);
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -102,7 +108,10 @@ const Home = () => {
                       />
                     </div>
                     <div className="posterImage__overlay">
-                      <div className="posterImage__title">
+                      <div
+                        className="posterImage__title"
+                        data-testid="movie-title"
+                      >
                         {movie.original_title}
                       </div>
                       <div className="posterImage__runtime">

@@ -20,6 +20,11 @@ const Cards = ({ movie }) => {
     setIsFavorite(!isFavorite);
   };
 
+  // Convert release_date to UTC format
+  if (movie.release_date) {
+    movie.release_date = new Date(movie.release_date).toUTCString();
+  }
+
   return (
     <>
       {isLoading ? (
