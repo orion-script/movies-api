@@ -97,10 +97,10 @@ const Home = () => {
                 renderIndicator={(clickHandler, isSelected, index) => (
                   <div
                     key={index}
-                    className={`${
-                      isSelected ? "selected" : ""
-                    } indicator-container`}
                     onClick={clickHandler}
+                    className={`${
+                      isSelected ? "selected text-white" : "text-slate-400"
+                    } indicator-containe flex justify-end mr-20 mt-6 cursor-pointer`}
                   >
                     {index + 1}
                   </div>

@@ -3,18 +3,19 @@
 } */
 
 .carousel-container {
-  position: relative;
+  width: 100%;
+  /* position: relative; */
 }
 
 .indicator-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #000;
+  /* position: relative; */
+  /* display: flex; */
+  /* width: 10%; */
+  /* background: #000;
   cursor: pointer;
   color: pink;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 12px 10px;
+  border-radius: 5px; */
 }
 
 .selected.indicator-container {
